@@ -1,3 +1,3 @@
 # Лабораторные работы по дисциплине "Введение в цифровую культуру и программирование"
 
-## (Лабораторная работа 2 - Эффективное кодирование)[https://github.com/Bibletoon/digitalCultureLabs/tree/master/Lab2]
+## [Лабораторная работа 2 - Эффективное кодирование](https://github.com/Bibletoon/digitalCultureLabs/tree/master/Lab2)
