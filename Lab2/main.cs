@@ -196,15 +196,15 @@ namespace ImageProcessing
             nodes.Remove(secondNode);
             foreach (int kid in secondNode.kids)
             {
-                res[kid] = "1" + res[kid];
+                res[kid] = "0" + res[kid];
             }
             foreach (int kid in firstNode.kids)
             {
-                res[kid] = "0" + res[kid];
+                res[kid] = "1" + res[kid];
                 secondNode.kids.Add(kid);
             }
-            res[firstNode.key] = "0" + res[firstNode.key];
-            res[secondNode.key] = "1" + res[secondNode.key];
+            res[firstNode.key] = "1" + res[firstNode.key];
+            res[secondNode.key] = "0" + res[secondNode.key];
             secondNode.kids.Add(firstNode.key);
             secondNode.probabilty += secondNode.probabilty;
             nodes.Add(secondNode);
