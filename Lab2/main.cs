@@ -12,7 +12,7 @@ namespace ImageProcessing
         {
             public List<int> kids;
             public int key;
-            public double probabilty;
+            public int count;
             public string code;
         }
 
@@ -68,12 +68,12 @@ namespace ImageProcessing
             {
                 TreeNode node = new TreeNode();
                 node.key = key;
-                node.probabilty = sortedProbability[key];
+                node.count = frequency[key];
                 node.kids = new List<int>();
                 nodes.Add(node);
                 counter++;
             }
-            nodes = nodes.OrderBy(it => it.probabilty).ToList();
+            nodes = nodes.OrderBy(it => it.count).ToList();
             Dictionary<int, string> Result = new Dictionary<int, string>();
             for (int i = 0; i<alphabet.Count;i++)
             {
@@ -196,19 +196,19 @@ namespace ImageProcessing
             nodes.Remove(secondNode);
             foreach (int kid in secondNode.kids)
             {
-                res[kid] = "0" + res[kid];
+                res[kid] = "1" + res[kid];
             }
             foreach (int kid in firstNode.kids)
             {
-                res[kid] = "1" + res[kid];
+                res[kid] = "0" + res[kid];
                 secondNode.kids.Add(kid);
             }
-            res[firstNode.key] = "1" + res[firstNode.key];
-            res[secondNode.key] = "0" + res[secondNode.key];
+            res[firstNode.key] = "0" + res[firstNode.key];
+            res[secondNode.key] = "1" + res[secondNode.key];
             secondNode.kids.Add(firstNode.key);
-            secondNode.probabilty += secondNode.probabilty;
+            secondNode.count += firstNode.count;
             nodes.Add(secondNode);
-            nodes = nodes.OrderBy(it => it.probabilty).ToList();
+            nodes = nodes.OrderBy(it => it.count).ToList();
             res = GetHaffmanCode(nodes, res);
             return res;
         }
@@ -274,3 +274,4 @@ namespace ImageProcessing
         }
     }
 }
+
